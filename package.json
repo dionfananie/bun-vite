@@ -11,7 +11,9 @@
     "type-check": "tsc --noEmit",
     "prepare": "husky install"
   },
- 
+  "lint-staged": {
+    "*.{ts,tsx}": "bun type-check"
+  },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
