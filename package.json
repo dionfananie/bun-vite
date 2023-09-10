@@ -12,7 +12,7 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{ts,tsx}": "bun type-check"
+    "*.{ts,tsx}": ["eslint --fix","bun type-check"]
   },
   "dependencies": {
     "react": "^18.2.0",
