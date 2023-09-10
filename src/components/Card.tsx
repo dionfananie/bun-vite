@@ -6,7 +6,6 @@ import { useAppGlobalContext } from "@/contexts/appGlobal";
 const Card = ({ setCountCard, countCard }: { countCard: number; setCountCard: Dispatch<SetStateAction<number>> }) => {
   const { count } = useAppGlobalContext();
 
-  console.log("card rendered");
   useEffect(() => {
     console.log(count);
   }, [countCard]);
