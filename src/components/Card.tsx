@@ -1,10 +1,15 @@
 import { CardProvider } from "@/contexts/card";
-import { Dispatch, SetStateAction, memo } from "react";
+import { Dispatch, SetStateAction, memo, useEffect } from "react";
 import TextDesc from "./TextDesc";
+import { useAppGlobalContext } from "@/contexts/appGlobal";
 
 const Card = ({ setCountCard, countCard }: { countCard: number; setCountCard: Dispatch<SetStateAction<number>> }) => {
-  console.log("card rendered");
+  const { count } = useAppGlobalContext();
 
+  console.log("card rendered");
+  useEffect(() => {
+    console.log(count);
+  }, [countCard]);
   return (
     <div className="block max-w-sm p-6 bg-white rounded-lg shadow hover:bg-gray-100">
       <CardProvider>
@@ -17,6 +22,7 @@ const Card = ({ setCountCard, countCard }: { countCard: number; setCountCard: Di
         </button>
         <p>countCard: {countCard}</p>
         <TextDesc />
+        <p>countCard global app: {count}</p>
       </CardProvider>
     </div>
   );

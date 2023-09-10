@@ -13,9 +13,9 @@ const router = createBrowserRouter([
 ]);
 const App = () => {
   return (
-    // <AppGlobalProvider>
-    <RouterProvider router={router} />
-    // </AppGlobalProvider>
+    <AppGlobalProvider>
+      <RouterProvider router={router} />
+    </AppGlobalProvider>
   );
 };
 
