@@ -23,6 +23,9 @@ jobs:
       - name: Building the project
         run: bun run build
 
+  artifacts:
+    needs: build
+    runs-on: ubuntu-latest
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
