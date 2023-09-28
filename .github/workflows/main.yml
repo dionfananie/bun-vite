@@ -32,6 +32,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.ID_CLOUDHOST_SECRET }}
+          port: 22
           target: /projects/bun-vite
           script: |
             git pull origin main
