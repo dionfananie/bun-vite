@@ -22,4 +22,18 @@ jobs:
 
       - name: Building the project
         run: bun run build
-    
+
+  deploy:
+    runs-on: ubuntu-latest
+     steps:
+      - name: Deploy Using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.ID_CLOUDHOST_SECRET }}
+          target: /projects/bun-vite
+          script: |
+            git pull origin main
+            pm2 restart bun-vite
+           
