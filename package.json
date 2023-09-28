@@ -8,16 +8,14 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsc --p tsconfig.json --noEmit",
     "prepare": "husky install"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": ["eslint --fix","bun type-check"]
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0"
+    "react-router-dom": "^6.15.0",
+    "react-hook-form": "^7.33.0"
   },
   "devDependencies": {
     "@types/node": "^20.6.0",

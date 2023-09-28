@@ -1,14 +1,10 @@
 import { memo } from "react";
-
+import Button from "./Button";
+interface TextDesc {
+  desc: string;
+}
 const TextDesc = () => {
-  console.log("rerendered text desc");
-
-  return (
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente dolorum repudiandae, dolorem pariatur est aut,
-      culpa officiis, magni beatae eligendi magnam ullam itaque eaque qui autem doloremque! Quia, adipisci consequuntur!
-    </p>
-  );
+  return <Button text="hello" />;
 };
 
 export default memo(TextDesc);
