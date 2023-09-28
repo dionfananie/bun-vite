@@ -27,6 +27,7 @@ jobs:
     needs: 
       - build
     runs-on: ubuntu-latest
+      steps:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
