@@ -6,7 +6,8 @@ on:
 
 jobs:
   type-check:
-    run: bun type-check
+   steps:
+      run: bun type-check
 
   build:
     runs-on: ubuntu-latest
