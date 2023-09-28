@@ -41,20 +41,19 @@ jobs:
       - build
     runs-on: ubuntu-latest
     steps:
-      - name: checkig path
+      - name: checking path
         run: | 
           echo ${{ github.workspace }}
           echo ${{ github.workspace }}/dist
       - name: copy file from dist to server
         uses: appleboy/scp-action@v0.1.4
-       
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.ID_CLOUDHOST_SECRET }}
           port: 22
-          source: dist/*
-          target: ~/projects/bun-vite/dist
+          source: bun-vite/dist/*
+          target: /projects/bun-vite/dist
 
       - name: Deploy Using ssh
         uses: appleboy/ssh-action@master
