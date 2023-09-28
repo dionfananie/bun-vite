@@ -20,58 +20,23 @@ jobs:
       - name: Type Checking
         run: bun type-check
 
-      - name: Building the project
-        run: bun run build
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: bun-vite
-          path: dist
-          if-no-files-found: error
-
-
-  artifacts:
-    needs: 
+  deploy:
+    needs:
       - build
     runs-on: ubuntu-latest
     steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: bun-vite
-          path: dist
-
-  deploy:
-    needs:
-      - artifacts
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-
-      - name: checking path
-        run: ls -al /home/runner/work/bun-vite/bun-vite
-
-      - name: copy file from dist to server
-        uses: appleboy/scp-action@v0.1.4
+     
+      - name: Deploy repo
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.ID_CLOUDHOST_SECRET }}
           port: 22
-          source: /home/runner/work/bun-vite/bun-vite
-          target: ~/projects/bun-vite/dist
-
-      # - name: Pulling Updates from server
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{ secrets.SSH_HOST }}
-      #     username: ${{ secrets.SSH_USERNAME }}
-      #     key: ${{ secrets.ID_CLOUDHOST_SECRET }}
-      #     port: 22
-      #     script: |
-      #       cd ~/projects/bun-vite
-      #       git pull origin main
-      #       pm2 restart bun-vite
+          script: |
+            cd ~/projects/bun-vite
+            git pull origin main
+            bun install
+            bun run build
+            pm2 restart bun-vite
            
