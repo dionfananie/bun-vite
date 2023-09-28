@@ -44,10 +44,10 @@ jobs:
       - name: copy file from dist to server
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.ID_CLOUDHOST_SECRET }}
+          port: 22
           source: ${{ github.workspace }}/dist/
           target: /projects/bun-vite/dist
 
