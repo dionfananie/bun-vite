@@ -6,9 +6,11 @@ on:
 
 jobs:
   type-check:
-   steps:
-    - name: Type Checking
-      run: bun type-check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Type Checking
+        run: bun type-check
 
   build:
     runs-on: ubuntu-latest
