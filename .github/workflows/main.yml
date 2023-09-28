@@ -41,17 +41,6 @@ jobs:
       - build
     runs-on: ubuntu-latest
     steps:
-      - name: Pulling Updates from server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.ID_CLOUDHOST_SECRET }}
-          port: 22
-          script: |
-            cd ~/projects/bun-vite
-            git pull origin main
-           
       - name: copy file from dist to server
         uses: appleboy/scp-action@v0.1.4
         with:
@@ -65,5 +54,14 @@ jobs:
             cd ~/projects/bun-vite
             pm2 restart bun-vite
 
-    
+      - name: Pulling Updates from server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.ID_CLOUDHOST_SECRET }}
+          port: 22
+          script: |
+            cd ~/projects/bun-vite
+            git pull origin main
            
