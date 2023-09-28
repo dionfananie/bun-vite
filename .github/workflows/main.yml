@@ -23,11 +23,6 @@ jobs:
       - name: Building the project
         run: bun run build
 
-  artifacts:
-    needs: 
-      - build
-    runs-on: ubuntu-latest
-    steps:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
@@ -35,6 +30,12 @@ jobs:
           path: dist
           if-no-files-found: error
 
+
+  artifacts:
+    needs: 
+      - build
+    runs-on: ubuntu-latest
+    steps:
       - name: Download build artifact
         uses: actions/download-artifact@v3
         with:
