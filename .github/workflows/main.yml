@@ -50,12 +50,9 @@ jobs:
           port: 22
           source: .
           target: ~/projects/bun-vite/dist
-          script: |
-            cd ~/projects/bun-vite
-            pm2 restart bun-vite
 
       - name: Pulling Updates from server
-        uses: appleboy/scp-action@v0.1.4
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
@@ -64,4 +61,5 @@ jobs:
           script: |
             cd ~/projects/bun-vite
             git pull origin main
+             pm2 restart bun-vite
            
