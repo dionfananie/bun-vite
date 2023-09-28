@@ -9,6 +9,7 @@ const Index = () => {
     <div className="flex justify-center items-center w-screen h-screen">
       <div>
         <p>Hello changes artifacts</p>
+        <p>Hello changes artifacts 2</p>
         <FirstCard count={count} setCount={setCount} />
         <Card countCard={countCard} setCountCard={setCountCard} />
       </div>
