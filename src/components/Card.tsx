@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction, memo } from "react";
 import TextDesc from "./TextDesc";
 import { useAppGlobalContext } from "@/contexts/appGlobal";
 
-const Card = ({ setCountCard, countCard }: { countCard: number; setCountCard: Dispatch<SetStateAction<number>> }) => {
+const Card = ({ setCountCard, countCard }: { countCard: numbe; setCountCard: Dispatch<SetStateAction<number>> }) => {
   const { count } = useAppGlobalContext();
 
   return (
