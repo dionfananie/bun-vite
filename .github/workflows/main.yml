@@ -41,7 +41,7 @@ jobs:
       - build
     runs-on: ubuntu-latest
     steps:
-     - name: copy file from ${{ github.workspace }}/dist to server
+     - name: copy file from dist to server
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
