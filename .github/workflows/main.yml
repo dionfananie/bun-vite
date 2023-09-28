@@ -24,7 +24,8 @@ jobs:
         run: bun run build
 
   artifacts:
-    needs: build
+    needs: 
+      - build
     runs-on: ubuntu-latest
       - name: Upload artifact
         uses: actions/upload-artifact@v3
@@ -41,7 +42,7 @@ jobs:
 
   deploy:
     needs:
-      - build
+      - artifacts
     runs-on: ubuntu-latest
     steps:
       - name: checkout
