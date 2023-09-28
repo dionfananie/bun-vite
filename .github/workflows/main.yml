@@ -44,6 +44,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
+      - name: checking path
+        run: ls -al /home/runner/work/bun-vite/bun-vite
+
       - name: copy file from dist to server
         uses: appleboy/scp-action@v0.1.4
         with:
@@ -51,7 +54,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.ID_CLOUDHOST_SECRET }}
           port: 22
-          source: /home/runner/work/bun-vite/bun-vite/dist
+          source: /home/runner/work/bun-vite/bun-vite
           target: ~/projects/bun-vite/dist
 
       # - name: Pulling Updates from server
