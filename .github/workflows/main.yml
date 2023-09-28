@@ -41,6 +41,16 @@ jobs:
       - build
     runs-on: ubuntu-latest
     steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v35
+        with:
+          since_last_remote_commit: true
+          separator: ","
+
       - name: copy file from dist to server
         uses: appleboy/scp-action@v0.1.4
         with:
@@ -48,7 +58,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.ID_CLOUDHOST_SECRET }}
           port: 22
-          source: .
+          source: ${{ steps.changed-files.outputs.all_changed_files }}
           target: ~/projects/bun-vite/dist
 
       # - name: Pulling Updates from server
