@@ -5,6 +5,9 @@ on:
     branches: [ main ]
 
 jobs:
+  type-check:
+    run: bun type-check
+
   build:
     runs-on: ubuntu-latest
 
