@@ -20,37 +20,11 @@ jobs:
       - name: Type Checking
         run: bun type-check
 
-      - name: Building the project
-        run: bun run build
-
-      - name: Publish artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: bun-vite
-          path: ${{ github.workspace }}/dist/
-          if-no-files-found: error
-
-      - name: Download build artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: bun-vite
-          path: ${{ github.workspace }}/dist/
-
   deploy:
     needs:
       - build
     runs-on: ubuntu-latest
     steps:
-      - name: copy file from dist to server
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.ID_CLOUDHOST_SECRET }}
-          port: 22
-          source: ${{ github.workspace }}/dist/
-          target: /projects/bun-vite/dist
-
       - name: Deploy Using ssh
         uses: appleboy/ssh-action@master
         with:
@@ -61,5 +35,6 @@ jobs:
           script: |
             cd ~/projects/bun-vite
             git pull origin main
+            bun run build
             pm2 restart bun-vite
            
