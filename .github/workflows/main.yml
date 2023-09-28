@@ -24,6 +24,8 @@ jobs:
         run: bun run build
 
   deploy:
+    needs:
+      - build
     runs-on: ubuntu-latest
     steps:
       - name: Deploy Using ssh
@@ -33,8 +35,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.ID_CLOUDHOST_SECRET }}
           port: 22
-          target: /projects/bun-vite
           script: |
+            cd ~/projects/bun-vite
             git pull origin main
             pm2 restart bun-vite
            
