@@ -7,13 +7,6 @@ on:
 jobs:
   type-check:
     runs-on: ubuntu-latest
-    
-    steps:
-      - name: Type Checking
-        run: bun type-check
-
-  build:
-    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
@@ -25,5 +18,12 @@ jobs:
       - name: Install Depedencies
         run: bun i
 
+      - name: Type Checking
+        run: bun type-check
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Building the project
         run: bun run build
