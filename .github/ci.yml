@@ -2,7 +2,7 @@ name: Node.js CI
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -14,5 +14,6 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 18.x
+
     - run: bun i
     - run: bun run build
