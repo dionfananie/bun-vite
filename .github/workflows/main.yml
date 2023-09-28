@@ -5,9 +5,8 @@ on:
     branches: [ main ]
 
 jobs:
-  type-check:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -21,9 +20,6 @@ jobs:
       - name: Type Checking
         run: bun type-check
 
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Building the project
         run: bun run build
+    
