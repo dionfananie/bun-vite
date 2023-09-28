@@ -52,8 +52,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.ID_CLOUDHOST_SECRET }}
           port: 22
-          source: bun-vite/dist/*
-          target: /projects/bun-vite/dist
+          source: ${{ github.workspace }}/dist/*
+          target: ~/projects/bun-vite/dist
 
       - name: Deploy Using ssh
         uses: appleboy/ssh-action@master
