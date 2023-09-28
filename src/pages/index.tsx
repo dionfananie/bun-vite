@@ -9,9 +9,7 @@ const Index = () => {
     <div className="flex justify-center items-center w-screen h-screen">
       <div>
         <FirstCard count={count} setCount={setCount} />
-        {/* <CardProvider> */}
         <Card countCard={countCard} setCountCard={setCountCard} />
-        {/* </CardProvider> */}
       </div>
     </div>
   );

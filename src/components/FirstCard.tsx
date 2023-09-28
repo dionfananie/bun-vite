@@ -11,7 +11,7 @@ const FirstCard = ({ count, setCount }: { count: number; setCount: Dispatch<SetS
         Click Count
       </button>
       <p>count App global: {count}</p>
-      this is a first card
+      this is a first changes in components using github actions
     </div>
   );
 };
