@@ -1,0 +1,19 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+   
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        
+      - run: bun i
+      - run: bun run build
