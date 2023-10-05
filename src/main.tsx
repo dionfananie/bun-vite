@@ -9,4 +9,4 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   </React.StrictMode>,
 );
 
-// hello this is example code 2 heheheheheheh
+// hello this is example code
